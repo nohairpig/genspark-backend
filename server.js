@@ -792,24 +792,26 @@ app.post(
                 {
                     windowsHide: true
                 },
-                (
-                    error,
-                    stdout,
-                    stderr
-                ) => {
-
+                (error, stdout, stderr) => {
                     if (error) {
                         console.error(
                             "Genspark 腳本生成失敗：",
                             error
                         );
 
-                        console.error(stderr);
+                        console.error(
+                            "Genspark stdout：",
+                            stdout
+                        );
+
+                        console.error(
+                            "Genspark stderr：",
+                            stderr
+                        );
 
                         return res.status(500).json({
                             success: false,
-                            error:
-                                "Genspark 冥想腳本生成失敗"
+                            error: "Genspark 冥想腳本生成失敗"
                         });
                     }
 
